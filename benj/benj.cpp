@@ -6,6 +6,7 @@
 #include <avr/pgmspace.h>
 
 #define PIXELPIN 7
+#define REDLEDPIN 9
 
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS 2
@@ -20,6 +21,7 @@ typedef enum state_machine
 	STATE_FIRST = 0,
 	STATE_SECOND,
 	STATE_THIRD,
+	STATE_FOUR,
 	STATE_ABORT,
 	STATE_MAX,
 } state_machine_t;
@@ -95,32 +97,34 @@ char Read_Button_PB(int debounce, char * exiting, button_mask_t mask)
 void setup() {
 
 	Serial.begin (115200);	// Initialisation du port série pour avoir un retour sur le serial monitor
+	pinMode (REDLEDPIN, OUTPUT);
+	analogWrite(REDLEDPIN, 0);
 	Serial.println ("RGB LED initialization");
 	pixels.begin ();		// This initializes the NeoPixel library.
 	led_colors(LED_ALL, 0, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED_ALL, 255, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED_ALL, 0, 255, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED_ALL, 0, 0, 255);
-	delay(500);
+	delay(100);
 	led_colors(LED0, 0, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED0, 255, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED0, 0, 255, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED0, 0, 0, 255);
-	delay(500);
+	delay(100);
 	led_colors(LED1, 0, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED1, 255, 0, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED1, 0, 255, 0);
-	delay(500);
+	delay(100);
 	led_colors(LED1, 0, 0, 255);
-	delay(500);
+	delay(100);
 	led_colors(LED_ALL, 0, 0, 0);
 }
 
@@ -137,6 +141,7 @@ void loop() {
 	if (sm == STATE_FIRST)
 	{
 		Serial.print ("STATE_MACHINE_FIRST\n");
+		analogWrite(REDLEDPIN, 255);
 		while (!exiting) {
 			Read_Button_PB(100, &exiting, BUTTON0);
 			if (exiting == 1) {
@@ -151,6 +156,7 @@ void loop() {
 	else if (sm == STATE_SECOND)
 	{
 		Serial.print ("STATE_MACHINE_SECOND\n");
+		analogWrite(REDLEDPIN, 64);
 		while (!exiting) {
 			Read_Button_PB(100, &exiting, BUTTON0);
 			if (exiting == 1) {
@@ -158,8 +164,8 @@ void loop() {
 				delay (1000);
 				break;
 			}
-			led_colors_keep_others(LED0, (i++%16)<<2 , (j++%14)<<2, (k++%12)<<2);
-			led_colors_keep_others(LED1, (j%14)<<2 , (k%12)<<2, (i%16)<<2);
+			led_colors_keep_others(LED0, (i++%16)<<1 , (j++%14)<<1, (k++%12)<<1);
+			led_colors_keep_others(LED1, (j%14)<<1 , (k%12)<<1, (i%16)<<1);
 		}
 	}
 	else if (sm == STATE_THIRD)
@@ -168,11 +174,39 @@ void loop() {
 		while (!exiting) {
 			Read_Button_PB(100, &exiting, BUTTON0);
 			if (exiting == 1) {
+				sm = STATE_FOUR;
+				delay (1000);
+				break;
+			}
+			led_colors_keep_others(LED_ALL, ((i++)%12), ((j++ + i)%14), ((k++ + i + j)%20));
+			if (i%64 > 32)
+				analogWrite(REDLEDPIN, 255);
+			else
+				analogWrite(REDLEDPIN, 0);
+		}
+	}
+	else if (sm == STATE_FOUR)
+	{
+		int8_t z = 20;
+		Serial.print ("STATE_MACHINE_THIRD\n");
+		while (!exiting) {
+			Read_Button_PB(100, &exiting, BUTTON0);
+			if (exiting == 1) {
 				sm = STATE_FIRST;
 				delay (1000);
 				break;
 			}
-			led_colors_keep_others(LED_ALL, ((i++)%24), ((j++ + i)%24), ((k++ + i + j)%20)<<1);
+			if (i++>250)
+				led_colors_keep_others(LED_ALL, 16, 0, 32);
+			else
+				led_colors_keep_others(LED_ALL, 0, 0, 0);
+
+			analogWrite(REDLEDPIN, j);
+			j += z;
+			if (j >= 235)
+				z = -20;
+			if (j <= 20)
+				z = 20;
 		}
 	}
 	/*********/
