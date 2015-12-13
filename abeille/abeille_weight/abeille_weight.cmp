@@ -1,0 +1,157 @@
+Cmp-Mod V01 Created by CvPcb (2013-jul-07)-stable date = dim. 06 déc. 2015 22:00:08 CET
+
+BeginCmp
+TimeStamp = /56649F0C;
+Reference = P1;
+ValeurCmp = HE10-10;
+IdModule  = PIN_ARRAY_5x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490B9A;
+Reference = R1;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490C58;
+Reference = R2;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490C67;
+Reference = R3;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490C76;
+Reference = R4;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490C85;
+Reference = R5;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490C94;
+Reference = R6;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490CA3;
+Reference = R7;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490CB2;
+Reference = R8;
+ValeurCmp = 1000;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490EBD;
+Reference = R9;
+ValeurCmp = 68K;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490ECC;
+Reference = R10;
+ValeurCmp = 68K;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490EDB;
+Reference = R11;
+ValeurCmp = 68K;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490EEA;
+Reference = R12;
+ValeurCmp = 68K;
+IdModule  = R3-LARGE_PADS;
+EndCmp
+
+BeginCmp
+TimeStamp = /56491019;
+Reference = RVAR1;
+ValeurCmp = 100K;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /56491149;
+Reference = RVAR2;
+ValeurCmp = 100K;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5649113F;
+Reference = RVAR3;
+ValeurCmp = 100K;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /56491152;
+Reference = RVAR4;
+ValeurCmp = 100K;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /56491A2E;
+Reference = U1;
+ValeurCmp = CD4052B;
+IdModule  = DIP-16__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /564900A2;
+Reference = WEIGHT1;
+ValeurCmp = W0;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490093;
+Reference = WEIGHT2;
+ValeurCmp = W1;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /56490084;
+Reference = WEIGHT3;
+ValeurCmp = W2;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /5648FFA7;
+Reference = WEIGHT4;
+ValeurCmp = W3;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+EndListe
