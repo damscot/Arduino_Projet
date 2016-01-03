@@ -89,10 +89,10 @@ F 3 "" H 1650 3450 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND-RESCUE-abeille_weight #PWR1
+L GND-RESCUE-abeille_weight #PWR01
 U 1 1 5649013A
 P 2050 5150
-F 0 "#PWR1" H 2050 5150 30  0001 C CNN
+F 0 "#PWR01" H 2050 5150 30  0001 C CNN
 F 1 "GND" H 2050 5080 30  0001 C CNN
 F 2 "" H 2050 5150 60  0000 C CNN
 F 3 "" H 2050 5150 60  0000 C CNN
@@ -113,10 +113,10 @@ Wire Wire Line
 	2000 3550 2550 3550
 Connection ~ 2050 4000
 $Comp
-L VEE #PWR2
+L VEE #PWR02
 U 1 1 56490188
 P 2350 3050
-F 0 "#PWR2" H 2350 3250 40  0001 C CNN
+F 0 "#PWR02" H 2350 3250 40  0001 C CNN
 F 1 "VEE" H 2350 3200 40  0000 C CNN
 F 2 "" H 2350 3050 60  0000 C CNN
 F 3 "" H 2350 3050 60  0000 C CNN
@@ -455,10 +455,10 @@ Wire Wire Line
 Wire Wire Line
 	5000 4200 8300 4200
 $Comp
-L +5V #PWR3
+L +5V #PWR03
 U 1 1 56491E04
 P 6600 2700
-F 0 "#PWR3" H 6600 2790 20  0001 C CNN
+F 0 "#PWR03" H 6600 2790 20  0001 C CNN
 F 1 "+5V" H 6600 2850 30  0000 C CNN
 F 2 "" H 6600 2700 60  0000 C CNN
 F 3 "" H 6600 2700 60  0000 C CNN
@@ -470,7 +470,7 @@ Wire Wire Line
 Wire Wire Line
 	5100 3800 5100 5100
 Wire Wire Line
-	2050 5100 9900 5100
+	9900 5100 2050 5100
 Connection ~ 2050 5100
 Connection ~ 5100 4000
 Connection ~ 5100 3900
@@ -499,8 +499,6 @@ $EndComp
 Wire Wire Line
 	8400 3300 8400 3500
 Wire Wire Line
-	9500 3300 9500 3500
-Wire Wire Line
 	8400 3600 8400 3700
 Wire Wire Line
 	8300 4200 8300 4750
@@ -509,7 +507,7 @@ Wire Wire Line
 Wire Wire Line
 	9600 4750 9600 3700
 Wire Wire Line
-	9600 3700 9500 3700
+	9650 3700 9500 3700
 Wire Wire Line
 	8400 4100 6900 4100
 Wire Wire Line
@@ -522,22 +520,110 @@ Text Label 8800 5100 0    60   ~ 0
 GND
 Text Label 8100 3600 0    60   ~ 0
 XCOM
-Text Label 9600 3800 0    60   ~ 0
+Text Label 8800 3000 0    60   ~ 0
 YCOM
 Wire Wire Line
-	8400 3300 9900 3300
-Wire Wire Line
-	9900 3300 9900 5100
-Connection ~ 9500 3300
+	9900 1900 9900 5100
 Wire Wire Line
 	8400 4300 8400 4600
 Wire Wire Line
-	9500 4600 9500 4300
-Wire Wire Line
-	6600 4600 9500 4600
+	6600 4600 10000 4600
 Connection ~ 8400 4600
 Text Label 8800 4600 0    60   ~ 0
 5V
 Text Label 9050 3300 0    60   ~ 0
 GND
+Wire Wire Line
+	6150 3300 6600 3300
+Connection ~ 6600 3300
+$Comp
+L CONN_01X06 P2
+U 1 1 56899A3B
+P 7800 2250
+F 0 "P2" H 7800 2600 50  0000 C CNN
+F 1 "CONN_01X06" V 7900 2250 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7950 1850 50  0000 C CNN
+F 3 "" H 7800 2250 50  0000 C CNN
+	1    7800 2250
+	-1   0    0    1   
+$EndComp
+$Comp
+L CONN_01X04 P3
+U 1 1 56899C23
+P 9450 2250
+F 0 "P3" H 9450 2500 50  0000 C CNN
+F 1 "CONN_01X04" V 9550 2250 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 9450 2650 50  0000 C CNN
+F 3 "" H 9450 2250 50  0000 C CNN
+	1    9450 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9250 2100 9250 1900
+Wire Wire Line
+	9250 1900 9900 1900
+Connection ~ 9900 3300
+Wire Wire Line
+	9250 2400 9250 2750
+Wire Wire Line
+	8700 2750 10000 2750
+Wire Wire Line
+	10000 2750 10000 4600
+Wire Wire Line
+	9500 3900 9750 3900
+Wire Wire Line
+	9750 3900 9750 2600
+Wire Wire Line
+	9750 2600 9150 2600
+Wire Wire Line
+	9150 2600 9150 2300
+Wire Wire Line
+	9150 2300 9250 2300
+Text Label 9600 2600 0    60   ~ 0
+SCK
+Wire Wire Line
+	9500 4100 9800 4100
+Wire Wire Line
+	9050 2200 9250 2200
+Wire Wire Line
+	9250 2100 8000 2100
+Wire Wire Line
+	8700 2750 8700 2000
+Wire Wire Line
+	8700 2000 8000 2000
+Connection ~ 9250 2750
+Wire Wire Line
+	8000 2200 8600 2200
+Connection ~ 8100 3600
+Wire Wire Line
+	8600 2200 8600 3000
+Wire Wire Line
+	8600 3000 9650 3000
+Wire Wire Line
+	8100 3600 8100 2300
+Wire Wire Line
+	8100 2300 8000 2300
+Wire Wire Line
+	9900 3300 8400 3300
+Wire Wire Line
+	9500 4300 9800 4300
+Wire Wire Line
+	9800 2700 9050 2700
+Wire Wire Line
+	9050 2700 9050 2200
+Wire Wire Line
+	9650 3000 9650 3700
+Connection ~ 9600 3700
+Wire Wire Line
+	9800 4100 9800 2700
+Wire Wire Line
+	9800 4300 9800 4600
+Connection ~ 9800 4600
+Wire Wire Line
+	9500 3500 9500 3300
+Connection ~ 9500 3300
+Text Label 9650 4100 0    60   Italic 0
+DT
+Text Label 9550 3900 0    60   Italic 0
+SCK
 $EndSCHEMATC
