@@ -51,6 +51,6 @@ void loop() {
   Serial.println(scale.get_units(10), 1);
 
   scale.power_down();			        // put the ADC in sleep mode
-  delay(5000);
+  delay(500);
   scale.power_up();
 }
