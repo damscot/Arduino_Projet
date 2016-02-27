@@ -1689,4 +1689,10 @@ Wire Wire Line
 Wire Wire Line
 	6700 3850 7700 3850
 Connection ~ 6000 5400
+Connection ~ 8550 4500
+Connection ~ 8700 4500
+Connection ~ 8850 4500
+Connection ~ 8550 5850
+Connection ~ 8700 5850
+Connection ~ 8850 5850
 $EndSCHEMATC
