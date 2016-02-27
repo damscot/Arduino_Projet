@@ -1,13 +1,20 @@
 #include "HX711.h"
 
-// HX711.DOUT	- pin #D2
-// HX711.PD_SCK	- pin #D3
+#define HX711_DOUT 2
+#define HX711_SCK 3
 
-HX711 scale(2, 3);		// parameter "gain" is ommited; the default value 128 is used by the library
+#define CD4052_A 4
+#define CD4052_B 5
+
+HX711 scale(HX711_DOUT, HX711_SCK);		// parameter "gain" is ommited; the default value 128 is used by the library
 
 void setup() {
   Serial.begin(115200);
   Serial.println("HX711 Demo");
+  pinMode (CD4052_A, OUTPUT);
+  digitalWrite (CD4052_A, LOW);
+  pinMode (CD4052_B, OUTPUT);
+  digitalWrite (CD4052_B, LOW);
 
   Serial.println("Before setting up the scale:");
   Serial.print("read: \t\t");
@@ -25,7 +32,7 @@ void setup() {
 
   scale.set_scale(2280.f);                      // this value is obtained by calibrating the scale with known weights; see the README for details
   scale.tare();				        // reset the scale to 0
-
+  
   Serial.println("After setting up the scale:");
 
   Serial.print("read: \t\t");
@@ -45,12 +52,18 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("one reading:\t");
-  Serial.print(scale.get_units(), 1);
-  Serial.print("\t| average:\t");
-  Serial.println(scale.get_units(10), 1);
-
-  scale.power_down();			        // put the ADC in sleep mode
-  delay(500);
-  scale.power_up();
+  for (uint8_t i=0; i<4; i++) {
+    digitalWrite (CD4052_A, (i&0x1));
+    digitalWrite (CD4052_B, ((i>>1)&0x1));
+    scale.power_up();
+    delay(10);
+    Serial.print("Sensor ");
+    Serial.print(i);
+    Serial.print(" one reading:\t");
+    Serial.print(scale.get_units(), 1);
+    Serial.print("\t| average:\t");
+    Serial.println(scale.get_units(10), 1);
+    scale.power_down();
+    delay(100);
+  }
 }
