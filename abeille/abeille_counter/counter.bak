@@ -874,10 +874,6 @@ Text Label 4400 2000 0    60   ~ 0
 D4
 Text Label 4600 2000 0    60   ~ 0
 D5
-Text Label 5800 2000 0    60   ~ 0
-D6
-Text Label 6000 2000 0    60   ~ 0
-D7
 Entry Wire Line
 	1950 5600 2050 5700
 Entry Wire Line
@@ -1689,4 +1685,14 @@ Wire Wire Line
 Wire Wire Line
 	6700 3850 7700 3850
 Connection ~ 6000 5400
+Connection ~ 8550 4500
+Connection ~ 8700 4500
+Connection ~ 8850 4500
+Connection ~ 8550 5850
+Connection ~ 8700 5850
+Connection ~ 8850 5850
+Text Label 6000 2000 0    60   ~ 0
+D7
+Text Label 5950 2200 0    60   ~ 0
+D6
 $EndSCHEMATC
