@@ -13,7 +13,9 @@
 Encoder Enc(ENCFORW_PIN, ENCBACKW_PIN);
 long oldPosition  = 0;
 
-LiquidCrystal_I2C lcd(0x3F,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+// set the LCD address to 0x27 for a 16 chars and 2 line display
+// set the LCD address to 0x3F for a 16 chars and 4 line display
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 uint8_t ConfValue = 0;
 
