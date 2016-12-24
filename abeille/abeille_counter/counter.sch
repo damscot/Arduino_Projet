@@ -862,22 +862,18 @@ Entry Wire Line
 	5850 1800 5950 1900
 Entry Wire Line
 	5900 1800 6000 1900
-Text Label 1600 2000 0    60   ~ 0
+Text Label 1750 2200 0    60   ~ 0
 D0
 Text Label 1800 2000 0    60   ~ 0
 D1
-Text Label 3000 2000 0    60   ~ 0
+Text Label 3150 2200 0    60   ~ 0
 D2
 Text Label 3200 2000 0    60   ~ 0
 D3
-Text Label 4400 2000 0    60   ~ 0
+Text Label 4550 2200 0    60   ~ 0
 D4
 Text Label 4600 2000 0    60   ~ 0
 D5
-Text Label 5800 2000 0    60   ~ 0
-D6
-Text Label 6000 2000 0    60   ~ 0
-D7
 Entry Wire Line
 	1950 5600 2050 5700
 Entry Wire Line
@@ -894,21 +890,21 @@ Entry Wire Line
 	6150 5600 6250 5700
 Entry Wire Line
 	6200 5600 6300 5700
-Text Label 1800 5600 0    60   ~ 0
+Text Label 1950 5500 0    60   ~ 0
 D8
 Entry Wire Line
 	2000 5600 2100 5700
 Text Label 2000 5600 0    60   ~ 0
 D9
-Text Label 3150 5600 0    60   ~ 0
+Text Label 3350 5500 0    60   ~ 0
 D10
 Text Label 3400 5600 0    60   ~ 0
 D11
-Text Label 4550 5600 0    60   ~ 0
+Text Label 4750 5500 0    60   ~ 0
 D12
 Text Label 4800 5600 0    60   ~ 0
 D13
-Text Label 5950 5600 0    60   ~ 0
+Text Label 6150 5500 0    60   ~ 0
 D14
 Text Label 6200 5600 0    60   ~ 0
 D15
@@ -1689,4 +1685,14 @@ Wire Wire Line
 Wire Wire Line
 	6700 3850 7700 3850
 Connection ~ 6000 5400
+Connection ~ 8550 4500
+Connection ~ 8700 4500
+Connection ~ 8850 4500
+Connection ~ 8550 5850
+Connection ~ 8700 5850
+Connection ~ 8850 5850
+Text Label 6000 2000 0    60   ~ 0
+D7
+Text Label 5950 2200 0    60   ~ 0
+D6
 $EndSCHEMATC
