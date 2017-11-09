@@ -52,34 +52,102 @@ static const articles_t PROGMEM manuel[] = {
 };
 
 static const articles_t PROGMEM legumes[] = {
-  {0,"Pomme de Terre Bio",235},
+  {0,"legumes",-1},
   {1,"Tomate Bio",211},
   {2,"Poireau",245},
   {3,"Carotte",235},
+  {4,"Pomme de Terre Bio",235},
+  {5,"Tomate Bio",211},
+  {6,"Poireau",245},
+  {7,"Carotte",235},
+  {8,"Pomme de Terre Bio",235},
+  {9,"Tomate Bio",211},
+  {10,"Poireau",245},
+  {11,"Carotte",235},
+  {12,"Poireau",245},
+  {13,"Carotte",235},
+  {14,"Pomme de Terre Bio",235},
+  {15,"Tomate Bio",211},
+  {16,"Poireau",245},
+  {17,"Carotte",235},
+  {18,"Pomme de Terre Bio",235},
+  {19,"Tomate Bio",211},
+  {20,"Poireau",245},
   {-1,NULL,0},
 };
 
 static const articles_t PROGMEM fruits[] = {
-  {0,"Pomme Bio",135},
+  {0,"fruits",-1},
   {1,"Poire",311},
   {2,"Ananas",275},
+  {3,"Pomme Bio",135},
+  {4,"Poire",311},
+  {5,"Ananas",275},
+  {6,"Pomme Bio",135},
+  {7,"Poire",311},
+  {8,"Ananas",275},
+  {9,"Pomme Bio",135},
+  {10,"Poire",311},
+  {11,"Ananas",275},
+  {12,"Pomme Bio",135},
+  {13,"Poire",311},
+  {14,"Ananas",275},
+  {15,"Pomme Bio",135},
+  {16,"Poire",311},
+  {17,"Ananas",275},
+  {18,"Pomme Bio",135},
+  {19,"Poire",311},
+  {20,"Ananas",275},
   {-1,NULL,0},
 };
 
 static const articles_t PROGMEM fromages[] = {
-  {0,"Tomme de Savoie",235},
+  {0,"fromages",-1},
   {1,"Gruyere",211},
   {2,"Emmental",245},
   {3,"Gouda",235},
   {4,"Bleu Auvergne",235},
   {5,"Chevre Schudeler",235},
+  {6,"Tomme de Savoie",235},
+  {7,"Gruyere",211},
+  {8,"Emmental",245},
+  {9,"Gouda",235},
+  {10,"Bleu Auvergne",235},
+  {11,"Chevre Schudeler",235},
+  {12,"Tomme de Savoie",235},
+  {13,"Gruyere",211},
+  {14,"Emmental",245},
+  {15,"Gouda",235},
+  {16,"Bleu Auvergne",235},
+  {17,"Chevre Schudeler",235},
+  {18,"Tomme de Savoie",235},
+  {19,"Gruyere",211},
+  {20,"Emmental",245},
   {-1,NULL,0},
 };
 
 static const articles_t PROGMEM charcuteries[] = {
-  {0,"Salami",135},
+  {0,"charcuteries",-1},
   {1,"Saucisse Ardeche",311},
   {2,"Jambon",275},
+  {3,"Salami",135},
+  {4,"Saucisse Ardeche",311},
+  {5,"Jambon",275},
+  {6,"Salami",135},
+  {7,"Saucisse Ardeche",311},
+  {8,"Jambon",275},
+  {9,"Salami",135},
+  {10,"Saucisse Ardeche",311},
+  {11,"Jambon",275},
+  {12,"Salami",135},
+  {13,"Saucisse Ardeche",311},
+  {14,"Jambon",275},
+  {15,"Salami",135},
+  {16,"Saucisse Ardeche",311},
+  {17,"Jambon",275},
+  {18,"Salami",135},
+  {19,"Saucisse Ardeche",311},
+  {20,"Jambon",275},
   {-1,NULL,0},
 };
 
@@ -97,7 +165,13 @@ static const famille_t art_table [] = {
   [CHARCUTERIES] = {sizeof(charcuteries)/sizeof(articles_t),charcuteries},
 };
 
-void Display_Art(uint8_t fam, uint8_t idx) {
+typedef enum article_status {
+  ART_NONE=0,
+  ART_UNDEF,
+  ART_PRICE
+} article_status_t;
+
+int Display_Art(uint8_t fam, uint8_t idx) {
   if ((fam > MANUEL) && (fam <= CHARCUTERIES) && (idx < art_table[fam].size)) {
     char str[20];
     articles_t art;
@@ -120,9 +194,14 @@ void Display_Art(uint8_t fam, uint8_t idx) {
     sprintf(str, "Prix: %d.%02d  Euro   ",art.pu_cent_kg/100 ,art.pu_cent_kg%100);
     lcd.setCursor(0,3);
     lcd.print(str);
+    if (current_art_pu_cent_kg == -1)
+      return ART_UNDEF;
+    else
+      return ART_PRICE;
   }
   else {
     idx_art = 0;
+    return ART_NONE;
   }
 }
 
@@ -546,6 +625,7 @@ void setup() {
 /***********************************/
 /*             MAIN LOOP           */
 /***********************************/
+article_status_t art_stat = ART_NONE;
 
 void loop() {
   char str[20];
@@ -617,7 +697,7 @@ void loop() {
   if(!menuSelected) {
     
     if (inputKey){
-      outputKey = send_keys_out(inputKey, (curent_menu == &mm));
+      outputKey = send_keys_out(inputKey, (art_stat != ART_PRICE));
       sprintf(str, "Key:%c   ",outputKey);
       lcd.setCursor(3,1);
       lcd.print(str);
@@ -630,7 +710,7 @@ void loop() {
     
     
     if ((curent_menu != &mm) && (curent_menu != &muc))
-      Display_Art(mm.get_cur_menu_component_num(),idx_art);
+      art_stat = (article_status_t)(Display_Art(mm.get_cur_menu_component_num(),idx_art));
     else {
     sprintf(str, "Val:%d   ",newPosition);
     lcd.setCursor(3,2);
