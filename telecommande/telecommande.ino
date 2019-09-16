@@ -31,8 +31,8 @@
 #define LEFT_SW_APIN  A2
 #define RIGHT_SW_APIN A3
 
-#define RH33
-//#define RH24
+//#define RH33
+#define RH24
 //#define RH33_RCV
 //#define RH24_RCV
 
