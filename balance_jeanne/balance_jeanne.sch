@@ -28,7 +28,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:counter-cache
 LIBS:balance_jeanne-cache
 EELAYER 25 0
 EELAYER END
@@ -476,82 +475,7 @@ Wire Wire Line
 	5600 1000 5600 2200
 Connection ~ 5600 2200
 Wire Wire Line
-	7050 3650 5250 3650
-Wire Wire Line
-	5250 3650 5250 1350
-Wire Wire Line
-	5250 1350 4850 1350
-Wire Wire Line
-	4850 1450 5300 1450
-Wire Wire Line
-	5300 1450 5300 3400
-Wire Wire Line
-	5300 3400 8150 3400
-Wire Wire Line
-	8150 3400 8150 3650
-Wire Wire Line
-	4850 1550 5200 1550
-Wire Wire Line
-	5200 1550 5200 3850
-Wire Wire Line
-	5200 3850 7050 3850
-Wire Wire Line
-	4850 1650 5350 1650
-Wire Wire Line
-	5350 1650 5350 3350
-Wire Wire Line
-	5350 3350 8350 3350
-Wire Wire Line
-	8350 3350 8350 3850
-Wire Wire Line
 	8350 3850 8150 3850
-Wire Wire Line
-	4850 1750 5150 1750
-Wire Wire Line
-	5150 1750 5150 4050
-Wire Wire Line
-	5150 4050 7050 4050
-Wire Wire Line
-	4850 1850 5100 1850
-Wire Wire Line
-	5100 1850 5100 3250
-Wire Wire Line
-	5100 3250 8450 3250
-Wire Wire Line
-	8450 3250 8450 4050
-Wire Wire Line
-	8450 4050 8150 4050
-Wire Wire Line
-	4850 1950 5050 1950
-Wire Wire Line
-	5050 1950 5050 4250
-Wire Wire Line
-	5050 4250 7050 4250
-Wire Wire Line
-	4850 2050 5000 2050
-Wire Wire Line
-	5000 2050 5000 3150
-Wire Wire Line
-	5000 3150 8600 3150
-Wire Wire Line
-	8600 3150 8600 4250
-Wire Wire Line
-	8600 4250 8150 4250
-Wire Wire Line
-	8150 4450 8150 4900
-Wire Wire Line
-	8150 4900 4950 4900
-Wire Wire Line
-	4950 4900 4950 2300
-Wire Wire Line
-	4950 2300 4850 2300
-Connection ~ 4950 2300
-Wire Wire Line
-	7050 4450 4900 4450
-Wire Wire Line
-	4900 4450 4900 2200
-Wire Wire Line
-	4900 2200 4850 2200
 Wire Wire Line
 	1350 3700 1700 3700
 Wire Wire Line
@@ -670,4 +594,159 @@ Wire Wire Line
 	9750 3950 10250 3950
 Wire Wire Line
 	10250 3950 10250 3550
+$Comp
+L CONN_01X04 P11
+U 1 1 587CF144
+P 9650 5150
+F 0 "P11" H 9650 5350 50  0000 C CNN
+F 1 "balance_serial" V 9750 5150 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 9650 4650 50  0000 C CNN
+F 3 "" H 9650 5150 50  0000 C CNN
+	1    9650 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR011
+U 1 1 587CF303
+P 9150 4750
+F 0 "#PWR011" H 9150 4500 50  0001 C CNN
+F 1 "GND" H 9150 4600 50  0000 C CNN
+F 2 "" H 9150 4750 50  0000 C CNN
+F 3 "" H 9150 4750 50  0000 C CNN
+	1    9150 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR012
+U 1 1 587CF333
+P 9200 5500
+F 0 "#PWR012" H 9200 5350 50  0001 C CNN
+F 1 "+5V" H 9200 5640 50  0000 C CNN
+F 2 "" H 9200 5500 50  0000 C CNN
+F 3 "" H 9200 5500 50  0000 C CNN
+	1    9200 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 5000 9450 5000
+Wire Wire Line
+	9450 5300 9350 5300
+Wire Wire Line
+	9450 5100 9000 5100
+Wire Wire Line
+	9450 5200 9000 5200
+Text Label 9100 5200 0    60   ~ 0
+A2
+Text Label 9100 5100 0    60   ~ 0
+A3
+Wire Wire Line
+	9350 4750 9350 5000
+Wire Wire Line
+	9350 4750 9150 4750
+Wire Wire Line
+	9350 5300 9350 5500
+Wire Wire Line
+	9350 5500 9200 5500
+Wire Wire Line
+	4850 1350 5150 1350
+Wire Wire Line
+	4850 1450 5150 1450
+Wire Wire Line
+	4850 1550 5150 1550
+Wire Wire Line
+	4850 1650 5150 1650
+Wire Wire Line
+	4850 1750 5150 1750
+Wire Wire Line
+	4850 1850 5150 1850
+Wire Wire Line
+	4850 1950 5150 1950
+Wire Wire Line
+	4850 2050 5150 2050
+Wire Wire Line
+	4850 2200 5150 2200
+Wire Wire Line
+	5150 2300 4850 2300
+Wire Wire Line
+	4850 2400 5150 2400
+Wire Wire Line
+	4850 2500 5150 2500
+Wire Wire Line
+	4850 2600 5150 2600
+Wire Wire Line
+	4850 2700 5150 2700
+Wire Wire Line
+	4850 2800 5150 2800
+Wire Wire Line
+	4850 2900 5150 2900
+Wire Wire Line
+	8150 4050 8350 4050
+Wire Wire Line
+	8150 4250 8350 4250
+Wire Wire Line
+	8150 4450 8350 4450
+Wire Wire Line
+	8150 3650 8350 3650
+Wire Wire Line
+	7050 3650 6850 3650
+Wire Wire Line
+	7050 3850 6850 3850
+Wire Wire Line
+	7050 4050 6850 4050
+Wire Wire Line
+	7050 4250 6850 4250
+Wire Wire Line
+	7050 4450 6850 4450
+Text Label 4950 1350 0    60   ~ 0
+IO1_0
+Text Label 4950 1450 0    60   ~ 0
+IO1_1
+Text Label 4950 1550 0    60   ~ 0
+IO1_2
+Text Label 4950 1650 0    60   ~ 0
+IO1_3
+Text Label 4950 1750 0    60   ~ 0
+IO1_4
+Text Label 4950 1850 0    60   ~ 0
+IO1_5
+Text Label 4950 1950 0    60   ~ 0
+IO1_6
+Text Label 4950 2050 0    60   ~ 0
+IO1_7
+Text Label 4950 2200 0    60   ~ 0
+IO0_0
+Text Label 4950 2300 0    60   ~ 0
+IO0_1
+Text Label 4950 2400 0    60   ~ 0
+IO0_2
+Text Label 4950 2500 0    60   ~ 0
+IO0_3
+Text Label 4950 2600 0    60   ~ 0
+IO0_4
+Text Label 4950 2700 0    60   ~ 0
+IO0_5
+Text Label 4950 2800 0    60   ~ 0
+IO0_6
+Text Label 4950 2900 0    60   ~ 0
+IO0_7
+Text Label 8250 4050 0    60   ~ 0
+IO0_0
+Text Label 8250 3850 0    60   ~ 0
+IO0_1
+Text Label 8250 3650 0    60   ~ 0
+IO0_2
+Text Label 6900 3650 0    60   ~ 0
+IO0_3
+Text Label 6900 3850 0    60   ~ 0
+IO0_4
+Text Label 6900 4050 0    60   ~ 0
+IO0_5
+Text Label 6900 4250 0    60   ~ 0
+IO0_6
+Text Label 6900 4450 0    60   ~ 0
+IO0_7
+Text Label 8250 4450 0    60   ~ 0
+IO1_0
+Text Label 8250 4250 0    60   ~ 0
+IO1_1
 $EndSCHEMATC
