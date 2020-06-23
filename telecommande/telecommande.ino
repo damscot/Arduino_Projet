@@ -1298,7 +1298,7 @@ void setup() {
   if (!RH_24.init())
     Serial.println("Radiohead NRF24 init failed");
   // Defaults after init are 2.402 GHz (channel 2), 2Mbps, 0dBm
-  if (!RH_24.setChannel(1))
+  if (!RH_24.setChannel(2))
     Serial.println("setChannel failed");
   if (!RH_24.setRF(RH_NRF24::DataRate2Mbps, RH_NRF24::TransmitPower0dBm))
     Serial.println("setRF failed");
@@ -1316,6 +1316,9 @@ void setup() {
 }
 
 
+uint8_t network_address0[5] = {0,0,0,0,0};
+uint8_t network_address1[5] = {1,1,1,1,1};
+
 void voiture(int modeset) {
   int mode = modeset;
   char str[20];
@@ -1326,10 +1329,13 @@ void voiture(int modeset) {
   int left_posx,left_posy;
   int right_posx,right_posy;
   char left_sw,right_sw;
+  uint8_t alternate = 0;
   
   uint8_t buf[/*RH_ASK_MAX_MESSAGE_LEN*/16];
   uint8_t buflen = sizeof (buf);
-  
+  uint8_t buf2[/*RH_ASK_MAX_MESSAGE_LEN*/16];
+  uint8_t buf2len = sizeof (buf2);
+    
   while(1) {
   
 #ifdef RH33_RCV
@@ -1348,15 +1354,26 @@ void voiture(int modeset) {
     Serial.println((char *)(buf));
   }
 #endif
-  
+
+// Voiture 0
   buflen = 7;
   buf[0] = 'V';
-  buf[1] = 'M';
+  buf[1] = '0';
   buf[2] = '5';
   buf[3] = '0';
   buf[4] = '5';
   buf[5] = '0';
   buf[6] = 0;
+
+// Voiture 1
+  buf2len = 7;
+  buf2[0] = 'V';
+  buf2[1] = '1';
+  buf2[2] = '5';
+  buf2[3] = '0';
+  buf2[4] = '5';
+  buf2[5] = '0';
+  buf2[6] = 0;
 
   left_sw = digitalRead(LEFT_SW_APIN);
   right_sw = digitalRead(RIGHT_SW_APIN);
@@ -1397,8 +1414,14 @@ void voiture(int modeset) {
   if (mode == 0) {
     buf[2] = '0' + (left_posy/10);
     buf[3] = '0' + (left_posy%10);
-    buf[4] = '0' + (right_posx/10);
-    buf[5] = '0' + (right_posx%10);
+    buf[4] = '0' + (left_posx/10);
+    buf[5] = '0' + (left_posx%10);
+    
+    buf2[2] = '0' + (right_posy/10);
+    buf2[3] = '0' + (right_posy%10);
+    buf2[4] = '0' + (right_posx/10);
+    buf2[5] = '0' + (right_posx%10);
+  
   }
   else {
     int x,y;
@@ -1460,12 +1483,29 @@ void voiture(int modeset) {
 #endif  
   
 #ifdef RH24
-  RH_24.send(buf, buflen);
-  RH_24.waitPacketSent();
+
+  if (mode == 0) {
+    if ((alternate & 0x1) == 0x0) {
+      RH_24.setNetworkAddress(network_address0, sizeof(network_address0));
+      RH_24.send(buf, buflen);
+      RH_24.waitPacketSent();
+    } else {
+      RH_24.setNetworkAddress(network_address1, sizeof(network_address0));
+      RH_24.send(buf2, buf2len);
+      RH_24.waitPacketSent();
+    }
+    delay(10);
+    alternate ++;
+  } else {
+    RH_24.send(buf, buflen);
+    RH_24.waitPacketSent(); 
+  }
 #endif
 
   //Serial.print("Sending Buf:");
   //Serial.println((char *)(buf));
+  //Serial.print("Sending Buf2:");
+  //Serial.println((char *)(buf2));
   
   }
   
@@ -1550,4 +1590,3 @@ void loop() {
   }
   
 }
-
